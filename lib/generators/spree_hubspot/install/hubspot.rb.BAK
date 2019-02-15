@@ -1,0 +1,9 @@
+ActionMailer::Base.smtp_settings = {
+  address:              'smtp.hubapi.com',
+  port:                 587,
+  domain:               'naturalwellbeing.com',
+  user_name:            'hrfdvt58el@62515.smtp.hubspot.net',
+  password:             '3432fff8eljl1249fjjasdfnv3',
+  authentication:       :plain,
+  enable_starttls_auto: true
+}
