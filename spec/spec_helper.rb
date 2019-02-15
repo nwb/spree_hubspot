@@ -84,6 +84,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.before { ActionMailer::Base.deliveries.clear }
+
   config.fail_fast = ENV['FAIL_FAST'] || false
   config.order = "random"
 end

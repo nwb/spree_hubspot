@@ -3,14 +3,26 @@
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
-	```ruby
-		gem 'spree_hubspot', github: 'nwb/spree_hubspot'
-    ```
+
+```ruby
+	gem 'spree_hubspot', github: 'nwb/spree_hubspot'
+```
 
 1. Install the gem using Bundler:
-    ```ruby
-		bash$ bundle install
-    ```
+
+```ruby
+	bash$ bundle install
+```
+
+1. Setup
+
+```ruby
+	SpreeHubspot::Config.user_name = ""
+	SpreeHubspot::Config.password = ""
+	SpreeHubspot::Config.address = "smtp.hubapi.com"
+	SpreeHubspot::Config.port = 587
+	SpreeHubspot::Config.hapikey = ""
+```
 
 ## Testing
 
