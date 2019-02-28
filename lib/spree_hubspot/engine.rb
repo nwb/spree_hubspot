@@ -2,6 +2,7 @@ module SpreeHubspot
   class Engine < Rails::Engine
     require 'spree/core'
     require 'hubspot'
+
     isolate_namespace Spree
     engine_name 'spree_hubspot'
 
