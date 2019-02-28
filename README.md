@@ -14,14 +14,53 @@
 	bash$ bundle install
 ```
 
-1. Setup
+1. Setup - Spree.rb
+
+SMTP
 
 ```ruby
 	SpreeHubspot::Config.user_name = ""
 	SpreeHubspot::Config.password = ""
 	SpreeHubspot::Config.address = "smtp.hubapi.com"
 	SpreeHubspot::Config.port = 587
+```
+
+API
+
+```ruby
 	SpreeHubspot::Config.hapikey = ""
+```
+
+Config
+
+```ruby
+	SpreeHubspot::Config.uk_rma_email_id = 1234
+	SpreeHubspot::Config.uk_password_reset_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_recieved_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_reactivated_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_order_reminder_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_out_of_stock_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_generic_issue_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_credit_card_expired_email_id = 1234
+	SpreeHubspot::Config.uk_subscription_canceled_email_id = 1234
+	SpreeHubspot::Config.aus_rma_email_id = 1234
+	SpreeHubspot::Config.aus_password_reset_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_recieved_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_reactivated_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_order_reminder_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_out_of_stock_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_generic_issue_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_credit_card_expired_email_id = 1234
+	SpreeHubspot::Config.aus_subscription_canceled_email_id = 1234
+	SpreeHubspot::Config.eu_rma_email_id = 1234
+	SpreeHubspot::Config.eu_password_reset_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_recieved_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_reactivated_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_order_reminder_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_out_of_stock_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_generic_issue_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_credit_card_expired_email_id = 1234
+	SpreeHubspot::Config.eu_subscription_canceled_email_id = 1234
 ```
 
 ## Testing

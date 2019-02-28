@@ -1,6 +1,7 @@
 module SpreeHubspot
   class Engine < Rails::Engine
     require 'spree/core'
+    require 'hubspot'
     isolate_namespace Spree
     engine_name 'spree_hubspot'
 
@@ -13,6 +14,14 @@ module SpreeHubspot
 
     initializer "spree_hubspot.environment", before: :load_config_initializers do |app|
       SpreeHubspot::Config = SpreeHubspot::Configuration.new
+
+      Hubspot.configure do |config|
+        config.hapikey = SpreeHubspot::Config.hapikey
+        config.user_name = SpreeHubspot::Config.user_name
+        config.password = SpreeHubspot::Config.password
+        config.address = SpreeHubspot::Config.address
+        config.port = SpreeHubspot::Config.port
+      end
     end
 
     def self.activate
