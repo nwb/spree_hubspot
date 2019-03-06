@@ -3,15 +3,15 @@ require 'hubspot/transaction_email/mailer'
 module Spree
   class ReturnAuthorizationMailer < Hubspot::TransactionEmail::Mailer
     def email(user, return_authorization, *_args)
-      current_store = Spree::Store.current
-
-      if current_store.url.include? ".uk"
-        email_id = SpreeHubspot::Config.uk_rma_email_id
-      elsif current_store.url.include? ".au"
-        email_id = SpreeHubspot::Config.aus_rma_email_id
-      elsif current_store.url.include? ".eu"
-        email_id = SpreeHubspot::Config.eu_rma_email_id
-      end
+      email_id = if current_store.url.include? ".ca"
+          SpreeHubspot::Config.ca_rma_email_id
+        elsif current_store.url.include? ".uk"
+          SpreeHubspot::Config.uk_rma_email_id
+        elsif current_store.url.include? ".au"
+          SpreeHubspot::Config.aus_rma_email_id
+        elsif current_store.url.include? ".eu"
+          SpreeHubspot::Config.eu_rma_email_id
+        end
 
       contact_properties = []
 
@@ -34,6 +34,10 @@ module Spree
 
     def from_address
       "no-reply@example.com"
+    end
+
+    def from_store
+      @store ||= Spree::Store.current
     end
   end
 end
