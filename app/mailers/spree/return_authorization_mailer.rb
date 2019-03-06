@@ -3,7 +3,9 @@ require 'hubspot/transaction_email/mailer'
 module Spree
   class ReturnAuthorizationMailer < Hubspot::TransactionEmail::Mailer
     def email(user, return_authorization, *_args)
-      email_id = if current_store.url.include? ".ca"
+      email_id = if current_store.url.include? ".com"
+          SpreeHubspot::Config.com_rma_email_id
+        elsif current_store.url.include? ".ca"
           SpreeHubspot::Config.ca_rma_email_id
         elsif current_store.url.include? ".uk"
           SpreeHubspot::Config.uk_rma_email_id
