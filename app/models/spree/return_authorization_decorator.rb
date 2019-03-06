@@ -1,7 +1,7 @@
 module Spree
   module ReturnAuthorizationDecorator
     def self.prepended(base)
-      base.after_initialize :send_return_authorization_mailer
+      base.after_create :send_return_authorization_mailer
     end
 
     def send_return_authorization_mailer
