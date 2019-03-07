@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
+  s.required_ruby_version = '>= 2.3.0'
 
   s.add_dependency 'spree_core', '~> 3.4.0'
   s.add_dependency 'hubspot', '~> 1.0', '>= 1.0.1'
