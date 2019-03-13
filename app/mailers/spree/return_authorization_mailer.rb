@@ -2,9 +2,9 @@ require 'hubspot/transaction_email/mailer'
 
 module Spree
   class ReturnAuthorizationMailer < Hubspot::TransactionEmail::Mailer
-    def email(user, return_authorization, *_args)
+    def email(to_email, return_authorization, *_args)
 
-      email_id = case return_authorization.order.store
+      email_id = case return_authorization.order.store.code
       when "nwb", "pwb", "he"
         SpreeHubspot::Config.com_rma_email_id
       when "pwbca"
@@ -31,7 +31,7 @@ module Spree
         { name: "return_authorization_reason_id", value: return_authorization.return_authorization_reason_id }
       ]
 
-      mail(email_id: email_id, message: { to: user.email }, contact_properties: contact_properties, custom_properties: custom_properties) if email_id
+      mail(email_id: email_id, message: { to: to_email }, contact_properties: contact_properties, custom_properties: custom_properties) if email_id
     end
 
     private
