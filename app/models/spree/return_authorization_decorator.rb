@@ -5,8 +5,10 @@ module Spree
     end
 
     def send_return_authorization_mailer
-      user = order.try(:user)
-      Spree::ReturnAuthorizationMailer.email(user, self).deliver_now if user
+      user  = order.try(:user)
+      email = user.try(:email) || order.email
+
+      Spree::ReturnAuthorizationMailer.email(email, self).deliver_now if email
     end
   end
 end
