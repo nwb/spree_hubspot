@@ -4,18 +4,18 @@ module Spree
   class ReturnAuthorizationMailer < Hubspot::TransactionEmail::Mailer
     def email(to_email, return_authorization, *_args)
 
-      email_id = case return_authorization.order.store.code
-      when "nwb", "pwb", "he"
-        SpreeHubspot::Config.com_rma_email_id
-      when "pwbca"
-        SpreeHubspot::Config.ca_rma_email_id
-      when "pwbuk"
-        SpreeHubspot::Config.uk_rma_email_id
-      when "pwbau"
-        SpreeHubspot::Config.aus_rma_email_id
-      when "pwbeu"
-        SpreeHubspot::Config.eu_rma_email_id
-      end
+      email_id = case Spree::Store.current.code
+        when "nwb", "pwb", "he"
+          SpreeHubspot::Config.com_rma_email_id
+        when "pwbca"
+          SpreeHubspot::Config.ca_rma_email_id
+        when "pwbuk"
+          SpreeHubspot::Config.uk_rma_email_id
+        when "pwbau"
+          SpreeHubspot::Config.aus_rma_email_id
+        when "pwbeu"
+          SpreeHubspot::Config.eu_rma_email_id
+        end
 
       contact_properties = []
 
