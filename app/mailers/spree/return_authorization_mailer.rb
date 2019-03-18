@@ -35,6 +35,7 @@ module Spree
         { name: "number", value: return_authorization.number },
         { name: "state", value: return_authorization.state },
         { name: "order_id", value: return_authorization.order_id },
+        { name: "order_number", value: return_authorization.order.number},
         { name: "memo", value: return_authorization.memo },
         { name: "created_at", value: return_authorization.created_at },
         { name: "updated_at", value: return_authorization.updated_at },
