@@ -6,6 +6,11 @@ module SpreeHubspot
     preference :port, :integer, default: "Hubspot SMTP Port"
     preference :hapikey, :string, default: "Hubspot API Key"
 
+    preference :order_confirmation_email_id, :string, default: ""
+    preference :order_shipped_email_id, :string, default: ""
+    preference :order_canceled_email_id, :string, default: ""
+    preference :out_of_stock_email_id, :string, default: ""
+
     preference :com_rma_email_id, :string, default: ""
     preference :com_password_reset_email_id, :string, default: ""
     preference :com_subscription_recieved_email_id, :string, default: ""
