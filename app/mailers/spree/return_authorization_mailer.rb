@@ -3,6 +3,7 @@ require 'hubspot/transaction_email/mailer'
 module Spree
   class ReturnAuthorizationMailer < Hubspot::TransactionEmail::Mailer
     def email(to_email, return_authorization, *_args)
+      return_authorization_reason = return_authorization.return_authorization_reason
 
       email_id = case return_authorization.order.store.code
         when "nwb", "pwb", "he"
@@ -17,15 +18,15 @@ module Spree
           SpreeHubspot::Config.eu_rma_email_id
         end
 
-      if return_authorization.return_authorization_reason_id.nil?
-        return_reason = return_authorization.memo
-      else
-        return_reason =Spree::ReturnAuthorizationReason.find(return_authorization.return_authorization_reason_id).name
-      end
+      return_reason = return_authorization_reason.exists? ? return_authorization_reason.name : return_authorization.memo
 
-      returnunits=[]
-      return_authorization.return_items.each do |return_item|
-          returnunits << {:sku => return_item.inventory_unit.variant.sku, :return_quantity => return_item.inventory_unit.quantity, :return_state => return_item.return_state }
+      return_items = return_authorization.return_items
+      return_units = return_items.collect do |return_item|
+        { 
+          sku: return_item.inventory_unit.variant.sku,
+          return_quantity: return_item.inventory_unit.quantity,
+          return_state: return_item.return_state
+        }
       end
 
       contact_properties = []
@@ -41,8 +42,8 @@ module Spree
         { name: "updated_at", value: return_authorization.updated_at },
         { name: "stock_location_id", value: return_authorization.stock_location_id },
         { name: "return_authorization_reason_id", value: return_authorization.return_authorization_reason_id },
-        { name: "return_reason", value: return_reason},
-        { name: "return_items", value: returnunits}
+        { name: "return_reason", value: return_reason },
+        { name: "return_items", value: return_units }
       ]
 
       mail(email_id: email_id, message: { to: to_email }, contact_properties: contact_properties, custom_properties: custom_properties) if email_id
