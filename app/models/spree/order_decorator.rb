@@ -6,8 +6,7 @@ Spree::Order.class_eval do
 
     private
     def send_cancel_email
-      #OrderMailer.cancel_email(id).deliver_later
-
+      Spree::OrderMailer.cancel_email(id).deliver_later
     end
 
 end
