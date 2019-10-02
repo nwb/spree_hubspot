@@ -5,17 +5,7 @@ module Spree
     def reset_password_instructions(user, token, *_args)
       edit_password_reset_url = spree.edit_spree_user_password_url(reset_password_token: token, host: Spree::Store.current.url)
 
-      email_id = if from_store.url.include? ".com"
-          SpreeHubspot::Config.com_password_reset_email_id
-        elsif from_store.url.include? ".ca"
-          SpreeHubspot::Config.ca_password_reset_email_id
-        elsif from_store.url.include? ".uk"
-          SpreeHubspot::Config.uk_password_reset_email_id
-        elsif from_store.url.include? ".au"
-          SpreeHubspot::Config.aus_password_reset_email_id
-        elsif from_store.url.include? ".eu"
-          SpreeHubspot::Config.eu_password_reset_email_id
-        end
+      email_id = SpreeHubspot::Config.send(Spree::Store.current.code + '_password_reset_email_id')
 
       contact_properties = []
 

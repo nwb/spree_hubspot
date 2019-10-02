@@ -38,8 +38,15 @@ module SpreeHubspot
     preference :pwbeu_out_of_stock_email_id, :string, default: ""
     preference :pwbau_out_of_stock_email_id, :string, default: ""
 
+    preference :nwb_password_reset_email_id, :string, default: ""
+    preference :he_password_reset_email_id, :string, default: ""
+    preference :pwb_password_reset_email_id, :string, default: ""
+    preference :pwbca_password_reset_email_id, :string, default: ""
+    preference :pwbuk_password_reset_email_id, :string, default: ""
+    preference :pwbau_password_reset_email_id, :string, default: ""
+    preference :pwbeu_password_reset_email_id, :string, default: ""
+
     preference :com_rma_email_id, :string, default: ""
-    preference :com_password_reset_email_id, :string, default: ""
     preference :com_subscription_recieved_email_id, :string, default: ""
     preference :com_subscription_reactivated_email_id, :string, default: ""
     preference :com_subscription_order_reminder_email_id, :string, default: ""
@@ -49,7 +56,6 @@ module SpreeHubspot
     preference :com_subscription_canceled_email_id, :string, default: ""
 
     preference :ca_rma_email_id, :string, default: ""
-    preference :ca_password_reset_email_id, :string, default: ""
     preference :ca_subscription_recieved_email_id, :string, default: ""
     preference :ca_subscription_reactivated_email_id, :string, default: ""
     preference :ca_subscription_order_reminder_email_id, :string, default: ""
@@ -59,7 +65,6 @@ module SpreeHubspot
     preference :ca_subscription_canceled_email_id, :string, default: ""
 
     preference :uk_rma_email_id, :string, default: ""
-    preference :uk_password_reset_email_id, :string, default: ""
     preference :uk_subscription_recieved_email_id, :string, default: ""
     preference :uk_subscription_reactivated_email_id, :string, default: ""
     preference :uk_subscription_order_reminder_email_id, :string, default: ""
@@ -69,7 +74,6 @@ module SpreeHubspot
     preference :uk_subscription_canceled_email_id, :string, default: ""
 
     preference :aus_rma_email_id, :string, default: ""
-    preference :aus_password_reset_email_id, :string, default: ""
     preference :aus_subscription_recieved_email_id, :string, default: ""
     preference :aus_subscription_reactivated_email_id, :string, default: ""
     preference :aus_subscription_order_reminder_email_id, :string, default: ""
@@ -79,7 +83,6 @@ module SpreeHubspot
     preference :aus_subscription_canceled_email_id, :string, default: ""
     
     preference :eu_rma_email_id, :string, default: ""
-    preference :eu_password_reset_email_id, :string, default: ""
     preference :eu_subscription_recieved_email_id, :string, default: ""
     preference :eu_subscription_reactivated_email_id, :string, default: ""
     preference :eu_subscription_order_reminder_email_id, :string, default: ""
