@@ -100,7 +100,7 @@ Spree::ShipmentHandler.class_eval do
         ]
 
         #notify_customer("order_confirmation_email_id",order.store.code, order.email,contact_properties, custom_properties)
-        Spree::OrderMailer.notify_customer("order_confirmation_email_id",order.store.code, order.email,contact_properties, custom_properties)
+        Spree::OrderMailer.notify_customer("order_shipped_email_id",order.store.code, order.email,contact_properties, custom_properties)
 
     end
 
