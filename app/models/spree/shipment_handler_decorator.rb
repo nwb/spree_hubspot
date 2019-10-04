@@ -86,7 +86,7 @@ Spree::ShipmentHandler.class_eval do
             { name: "order_shipping_method", value: @shipment.shipping_method.name },
             { name: "order_tracking_number", value: @shipment.tracking },
             { name: "order_tracking_base_url", value: @shipment.tracking_url },
-            { name: "order_tracking_full_url", value: @shipment.tracking_url + @shipment.tracking },
+            { name: "order_tracking_full_url", value: ("" if @shipment.tracking_url.nil?) + @shipment.tracking },
 
 
             #marketing placeholders
