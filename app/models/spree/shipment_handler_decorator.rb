@@ -23,7 +23,7 @@ Spree::ShipmentHandler.class_eval do
                 :sku => line_item.variant.sku,
                 :quantity => line_item.quantity,
                 :product_url => domain + 'products/' + line_item.variant.product.slug,
-                :price => line_item.price
+                :price => sprintf("%0.2f",line_item.price.to_s)
             }
         end
 
@@ -77,10 +77,10 @@ Spree::ShipmentHandler.class_eval do
             { name: "line_item", value: lineitems_properties },
 
             #order level
-            { name: "discount", value: adjustment_total },
-            { name: "taxes", value: order.all_adjustments.tax.eligible.sum(:amount) },
-            { name: "shipping", value: shipping_cost },
-            { name: "total", value: order.total },
+            { name: "discount", value: sprintf("%0.2f",adjustment_total.to_s) },
+            { name: "taxes", value: sprintf("%0.2f",order.all_adjustments.tax.eligible.sum(:amount).to_s) },
+            { name: "shipping", value: sprintf("%0.2f",shipping_cost.to_s) },
+            { name: "total", value: sprintf("%0.2f",order.total.to_s) },
 
             #shipping:
             { name: "order_shipping_method", value: @shipment.shipping_method.name },
