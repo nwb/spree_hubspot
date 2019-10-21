@@ -3,9 +3,16 @@ require 'hubspot/transaction_email/mailer'
 module Spree
   class UserMailer < Hubspot::TransactionEmail::Mailer
     def reset_password_instructions(user, token, *_args)
-      edit_password_reset_url = spree.edit_spree_user_password_url(reset_password_token: token, host: Spree::Store.current.url)
 
-      email_id = SpreeHubspot::Config.send(Spree::Store.current.code + '_password_reset_email_id')
+      if user.orders.order('completed_at DESC').length>0
+        order = user.orders.order('completed_at DESC').first
+        last_visted_store = Spree::Store.find(order.store_id)
+      else
+        last_visted_store = Spree::Store.current
+      end
+
+      email_id = SpreeHubspot::Config.send(last_visted_store.code + '_password_reset_email_id')
+      edit_password_reset_url = spree.edit_spree_user_password_url(reset_password_token: token, host: last_visted_store.url)
 
       contact_properties = []
 
