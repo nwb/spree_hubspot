@@ -60,6 +60,9 @@ Spree::OrderMailer.class_eval do
      { name: "billing_country", value: order.bill_address.country.name },
      { name: "billing_zip", value: order.bill_address.zipcode },
 
+     { name: "shipping_first_name", value: order.ship_address.first_name },
+     { name: "shipping_last_name", value: order.ship_address.last_name },
+
      { name: "shipping_address1", value: order.ship_address.address1 },
      { name: "shipping_address2", value: order.ship_address.address2 },
      { name: "shipping_city", value: order.ship_address.city },
@@ -152,6 +155,9 @@ Spree::OrderMailer.class_eval do
         end,
         { name: "billing_country", value: order.bill_address.country.name },
         { name: "billing_zip", value: order.bill_address.zipcode },
+
+        { name: "shipping_first_name", value: order.ship_address.first_name },
+        { name: "shipping_last_name", value: order.ship_address.last_name },
 
         { name: "shipping_address1", value: order.ship_address.address1 },
         { name: "shipping_address2", value: order.ship_address.address2 },
